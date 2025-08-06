@@ -1,24 +1,15 @@
+// Disable Firebase completely for now
 
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { getStorage } from 'firebase/storage';
-import { getFirestore } from 'firebase/firestore/lite';
+// export const auth = getAuth();
+// const provider = new GoogleAuthProvider();
+// export const db = getFirestore(app);
+// export const storage = getStorage(app);
+// export const signInWithGoogle = () => signInWithPopup(auth, provider);
 
-const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+export const auth = null;
+export const db = null;
+export const storage = null;
+export const signInWithGoogle = () => {
+  console.warn("Firebase disabled in this environment");
 };
 
-
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth();
-const provider = new GoogleAuthProvider();
-export const db = getFirestore(app);
-export const storage = getStorage(app);
-
-
-export const signInWithGoogle = () => signInWithPopup(auth, provider);

@@ -1,0 +1,28 @@
+name: Deploy React Portfolio
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted   # This uses your self-hosted runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image
+        run: docker build -t react-portfolio:latest .
+
+      - name: Stop old container (if running)
+        run: |
+          docker stop react-portfolio || true
+          docker rm react-portfolio || true
+
+      - name: Run new container
+        run: docker run -d -p 3000:80 --name react-portfolio react-portfolio:latest
