@@ -6,9 +6,7 @@ import emailjs from '@emailjs/browser'
 import AnimatedLetters from '../AnimatedLetters'
 import './index.scss'
 
-const Contact = () => {
-  const [letterClass, setLetterClass] = useState('text-animate')
-  const form = useRef()
+
 
   useEffect(() => {
     return setTimeout(() => {
